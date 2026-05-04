@@ -1,0 +1,614 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FisioSalute — Centro Fisioterapico Racconigi (CN)</title>
+<meta name="description" content="Centro FisioSalute a Racconigi (CN): fisioterapia, riabilitazione, osteopatia, posturologia. Team qualificato, prenotazione facile. Risposta in 20 secondi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --blue:#2C5F8A;--blue-d:#1a3d5c;--blue-l:#e8f1f8;
+  --green:#27AE60;--green-d:#1e8449;
+  --white:#FFFFFF;--bg:#F8FAFB;
+  --text:#1a2e44;--mid:#4a6080;--muted:#7a90a8;--rim:#e2eaf2;
+  --r:12px;--sh:0 4px 24px rgba(44,95,138,.10);--sh2:0 8px 40px rgba(44,95,138,.16);
+}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--text);line-height:1.65;overflow-x:hidden}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--white);padding:16px 6%;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s}
+nav.scrolled{box-shadow:var(--sh)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--blue);text-decoration:none}
+.nav-logo span{color:var(--green)}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-tel{font-size:14px;font-weight:600;color:var(--blue);text-decoration:none}
+.nav-tel::before{content:'📞 '}
+.nav-cta{background:var(--green);color:#fff;padding:11px 22px;border-radius:var(--r);font-size:14px;font-weight:600;text-decoration:none;transition:all .2s}
+.nav-cta:hover{background:var(--green-d);transform:translateY(-1px);box-shadow:0 4px 16px rgba(39,174,96,.35)}
+@media(max-width:600px){.nav-tel{display:none}}
+/* BADGE STICKY */
+#resp-badge{position:fixed;top:72px;right:16px;z-index:190;background:var(--green);color:#fff;padding:8px 14px;border-radius:100px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:7px;box-shadow:0 4px 16px rgba(39,174,96,.4);opacity:0;transform:translateY(-8px);transition:opacity .4s,transform .4s;pointer-events:none}
+#resp-badge.on{opacity:1;transform:none}
+.bdot{width:7px;height:7px;border-radius:50%;background:#fff;animation:bdot 1.8s infinite}
+@keyframes bdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:110px 6% 80px;position:relative;overflow:hidden;background:var(--white)}
+.hero-blob{position:absolute;top:-10%;right:-8%;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(44,95,138,.07) 0%,transparent 70%);pointer-events:none}
+.hero-blob2{position:absolute;bottom:-5%;left:-5%;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(39,174,96,.05) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:640px;position:relative;z-index:1}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;background:var(--blue-l);color:var(--blue);padding:7px 16px;border-radius:100px;font-size:13px;font-weight:600;margin-bottom:28px}
+.chip-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:bdot 1.8s infinite}
+h1{font-family:'Playfair Display',serif;font-size:clamp(36px,6.5vw,70px);line-height:1.08;letter-spacing:-.4px;color:var(--text);margin-bottom:22px;font-weight:700}
+h1 em{font-style:italic;color:var(--blue)}
+.hero-sub{font-size:clamp(15px,1.8vw,18px);color:var(--mid);font-weight:300;line-height:1.8;max-width:520px;margin-bottom:38px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
+.btn-green{background:var(--green);color:#fff;padding:16px 32px;border-radius:var(--r);font-size:16px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .22s;border:none;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-green:hover{background:var(--green-d);transform:translateY(-2px);box-shadow:0 10px 28px rgba(39,174,96,.38)}
+.btn-outline{background:transparent;color:var(--blue);padding:16px 28px;border-radius:var(--r);font-size:16px;font-weight:600;border:2px solid var(--blue);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .22s}
+.btn-outline:hover{background:var(--blue);color:#fff;transform:translateY(-2px)}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#f0faf5;border:1px solid rgba(39,174,96,.3);padding:9px 16px;border-radius:100px;font-size:13px;font-weight:500;color:var(--green-d)}
+.hstats{display:flex;gap:32px;flex-wrap:wrap;margin-top:48px;padding-top:32px;border-top:1px solid var(--rim)}
+.hst-n{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--blue);line-height:1}
+.hst-l{font-size:11px;color:var(--muted);margin-top:4px;font-weight:500;letter-spacing:.5px;text-transform:uppercase}
+/* LAYOUT */
+.sec{padding:80px 6%}
+.si{max-width:1140px;margin:0 auto}
+.eye{font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.eye::before{content:'';width:24px;height:2px;background:var(--green)}
+h2{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,46px);line-height:1.12;letter-spacing:-.3px;margin-bottom:14px;font-weight:700}
+h2 em{font-style:italic;color:var(--blue)}
+.sub{font-size:17px;color:var(--mid);font-weight:300;line-height:1.75;max-width:540px;margin-bottom:48px}/* PAIN */
+.pain-sec{background:var(--bg)}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.pain-card{background:var(--white);border-radius:20px;padding:34px 28px;border:1px solid var(--rim);transition:all .28s;display:flex;flex-direction:column;gap:12px}
+.pain-card:hover{box-shadow:var(--sh2);border-color:rgba(44,95,138,.2);transform:translateY(-4px)}
+.pain-ico{font-size:38px;line-height:1}
+.pain-tag{display:inline-block;background:var(--blue-l);color:var(--blue);padding:4px 12px;border-radius:100px;font-size:12px;font-weight:600;width:fit-content}
+.pain-h{font-family:'Playfair Display',serif;font-size:19px;font-weight:600;line-height:1.35;color:var(--text)}
+.pain-b{font-size:14px;color:var(--mid);line-height:1.8;font-weight:300}
+.pain-sol{font-size:13px;font-weight:600;color:var(--green);display:flex;align-items:center;gap:6px}
+.pain-sol::before{content:'✓ '}
+/* SERVIZI */
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.srv-card{background:var(--bg);border:1px solid var(--rim);border-radius:16px;padding:28px 24px;transition:all .25s;cursor:default}
+.srv-card:hover{background:var(--white);box-shadow:var(--sh);border-color:rgba(44,95,138,.2);transform:translateY(-3px)}
+.srv-ico{font-size:34px;margin-bottom:14px;line-height:1}
+.srv-h{font-family:'Playfair Display',serif;font-size:19px;font-weight:600;margin-bottom:8px;color:var(--text)}
+.srv-b{font-size:13px;color:var(--mid);line-height:1.75;font-weight:300}
+.srv-link{display:inline-flex;align-items:center;gap:4px;margin-top:14px;font-size:13px;font-weight:600;color:var(--blue);text-decoration:none}
+.srv-link:hover{color:var(--green)}
+/* TEAM */
+.team-sec{background:var(--bg)}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.team-card{background:var(--white);border-radius:20px;padding:36px 26px;border:1px solid var(--rim);text-align:center;transition:all .28s}
+.team-card:hover{box-shadow:var(--sh2);transform:translateY(-4px)}
+.t-av{width:86px;height:86px;border-radius:50%;background:linear-gradient(135deg,var(--blue) 0%,var(--blue-d) 100%);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#fff;margin:0 auto 18px}
+.t-name{font-family:'Playfair Display',serif;font-size:19px;font-weight:600;margin-bottom:4px}
+.t-role{font-size:12px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.t-desc{font-size:13px;color:var(--mid);line-height:1.75;font-weight:300}
+.t-badge{display:inline-block;margin-top:14px;background:var(--blue-l);color:var(--blue);padding:4px 14px;border-radius:100px;font-size:12px;font-weight:600}
+/* REVIEWS */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.rev-card{background:var(--white);border:1px solid var(--rim);border-radius:16px;padding:26px 22px;transition:all .25s}
+.rev-card:hover{box-shadow:var(--sh);transform:translateY(-3px)}
+.rev-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.rev-av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--blue-l),rgba(44,95,138,.3));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:var(--blue);flex-shrink:0}
+.rev-name{font-weight:600;font-size:14px;color:var(--text)}
+.rev-date{font-size:12px;color:var(--muted)}
+.stars{color:#f4b400;font-size:15px;margin-bottom:10px;letter-spacing:2px}
+.rev-text{font-size:13.5px;color:var(--mid);line-height:1.8;font-style:italic;font-weight:300}
+.rev-src{margin-top:12px;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:5px}
+/* STEPS */
+.steps-sec{background:var(--blue-d)}
+.steps-sec .eye{color:rgba(255,255,255,.6)}
+.steps-sec .eye::before{background:rgba(255,255,255,.3)}
+.steps-sec h2{color:#fff}
+.steps-sec h2 em{color:rgba(255,255,255,.6)}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.step{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:38px 28px;text-align:center;transition:all .28s}
+.step:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.2);transform:translateY(-4px)}
+.step-n{width:58px;height:58px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-style:italic;font-size:24px;font-weight:700;margin:0 auto 20px}
+.step-h{font-family:'Playfair Display',serif;font-size:19px;color:#fff;margin-bottom:10px;font-weight:600}
+.step-b{font-size:13.5px;color:rgba(255,255,255,.65);line-height:1.8;font-weight:300}
+/* FORM */
+.form-sec{background:var(--bg)}
+.form-wrap{max-width:660px;margin:0 auto;background:var(--white);border:1px solid var(--rim);border-radius:24px;padding:52px 44px;box-shadow:var(--sh);position:relative;overflow:hidden}
+.form-wrap::after{content:'';position:absolute;bottom:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(39,174,96,.07),transparent 70%);pointer-events:none}
+.form-h{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin-bottom:6px;color:var(--text)}
+.form-h em{font-style:italic;color:var(--blue)}
+.form-p{font-size:14px;color:var(--mid);margin-bottom:32px;font-weight:300;line-height:1.7}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ff{margin-bottom:18px}
+.ff label{display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--mid);margin-bottom:7px}
+.ff input,.ff select{width:100%;background:var(--bg);border:1.5px solid var(--rim);color:var(--text);padding:13px 15px;border-radius:var(--r);font-size:15px;font-family:'Inter',sans-serif;outline:none;transition:all .2s}
+.ff input:focus,.ff select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(44,95,138,.07);background:var(--white)}
+.req{color:var(--green)}
+.form-btn{width:100%;padding:16px;border-radius:var(--r);background:var(--green);color:#fff;font-size:16px;font-weight:600;font-family:'Inter',sans-serif;border:none;cursor:pointer;margin-top:4px;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .22s}
+.form-btn:hover{background:var(--green-d);transform:translateY(-2px);box-shadow:0 10px 28px rgba(39,174,96,.38)}
+.form-btn:disabled{opacity:.65;cursor:not-allowed;transform:none;box-shadow:none}
+.form-micro{text-align:center;font-size:12px;color:var(--muted);margin-top:12px}
+.form-ok{display:none;text-align:center;padding:16px 0}
+.form-ok.on{display:block}
+.ok-ico{font-size:54px;margin-bottom:14px}
+.form-err{display:none;text-align:center;font-size:13px;color:#e74c3c;margin-top:10px}
+.form-err a{color:#e74c3c;font-weight:700}
+.spin{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .65s linear infinite;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* FOOTER */
+footer{background:var(--blue-d);color:rgba(255,255,255,.7);padding:60px 6% 26px}
+.fw{max-width:1140px;margin:0 auto}
+.frow{display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;margin-bottom:48px}
+.flogo{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:#fff;margin-bottom:12px}
+.flogo span{color:#5fe093}
+.fdesc{font-size:13px;line-height:1.85;font-weight:300;max-width:280px;margin-bottom:16px}
+.faddr{font-size:13px;line-height:1.9;font-weight:300}
+.fcol h5{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.fcol a{font-size:13px;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s;font-weight:300}
+.fcol a:hover{color:#fff}
+.fbot{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:rgba(255,255,255,.35)}
+.fbot a{color:rgba(255,255,255,.35);text-decoration:none}
+.fbot a:hover{color:#fff}
+/* WA + CHAT */
+#wa-float{position:fixed;bottom:24px;left:24px;z-index:9998;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.22);text-decoration:none;opacity:0;pointer-events:none;transform:scale(.8);transition:opacity .4s,transform .4s}
+#wa-float.on{opacity:1;pointer-events:auto;transform:scale(1)}
+#wa-float:hover{transform:scale(1.1)!important}
+#chat-btn{position:fixed;bottom:24px;right:24px;z-index:9998;width:56px;height:56px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(39,174,96,.4);cursor:pointer;border:none;opacity:0;pointer-events:none;transform:scale(.8);transition:opacity .4s,transform .4s}
+#chat-btn.on{opacity:1;pointer-events:auto;transform:scale(1)}
+#chat-btn:hover{transform:scale(1.1)!important;background:var(--green-d)}
+#chat-box{position:fixed;bottom:92px;right:24px;z-index:9997;width:310px;background:var(--white);border-radius:20px;box-shadow:0 12px 48px rgba(0,0,0,.15);display:none;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(10px);transition:opacity .25s,transform .25s}
+#chat-box.open{display:flex;opacity:1;transform:none}
+.chat-head{background:var(--green);padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
+.chat-head-l{display:flex;align-items:center;gap:10px}
+.chat-av{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:15px}
+.chat-info-name{font-weight:600;font-size:13px;color:#fff}
+.chat-status{font-size:11px;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:4px}
+.chat-status::before{content:'';width:6px;height:6px;border-radius:50%;background:#5fe093;display:inline-block}
+.chat-close{background:none;border:none;color:rgba(255,255,255,.8);cursor:pointer;font-size:18px;line-height:1;padding:0}
+.chat-msgs{padding:14px;display:flex;flex-direction:column;gap:10px;min-height:120px;max-height:220px;overflow-y:auto}
+.cmsg{padding:10px 13px;border-radius:12px;font-size:13.5px;line-height:1.6;max-width:88%}
+.cmsg.bot{background:var(--bg);color:var(--text);align-self:flex-start;border-bottom-left-radius:4px}
+.cmsg.usr{background:var(--green);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-inp{display:flex;border-top:1px solid var(--rim);padding:10px}
+.chat-inp input{flex:1;border:1.5px solid var(--rim);border-radius:8px;padding:9px 13px;font-size:13px;outline:none;font-family:'Inter',sans-serif;transition:border .2s}
+.chat-inp input:focus{border-color:var(--green)}
+.chat-inp button{background:var(--green);border:none;border-radius:8px;padding:9px 13px;margin-left:8px;cursor:pointer;color:#fff;font-size:15px;transition:background .2s}
+.chat-inp button:hover{background:var(--green-d)}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .52s ease,transform .52s ease}
+.reveal.on{opacity:1;transform:none}
+/* RESPONSIVE */
+@media(max-width:900px){
+  .pain-grid,.srv-grid,.team-grid,.rev-grid,.steps-grid{grid-template-columns:1fr 1fr}
+  .frow{grid-template-columns:1fr;gap:28px}
+  .form-wrap{padding:36px 22px}
+  .f2{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .pain-grid,.srv-grid,.team-grid,.rev-grid,.steps-grid{grid-template-columns:1fr}
+  .hero{padding:96px 5% 56px}
+  .sec{padding:60px 5%}
+  #chat-box{width:calc(100vw - 48px);right:24px}
+  .hstats{gap:20px}
+  h1{letter-spacing:-.2px}
+}
+</style>
+</head>
+<body>
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Fisio<span>Salute</span></a>
+  <div class="nav-right">
+    <a href="tel:TELEFONO_CLIENTE" class="nav-tel">TELEFONO_CLIENTE</a>
+    <a href="#prenota" class="nav-cta">Prenota ora</a>
+  </div>
+</nav>
+
+<!-- BADGE STICKY -->
+<div id="resp-badge">
+  <span class="bdot"></span>
+  Risposta garantita in 20 secondi
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-blob"></div>
+  <div class="hero-blob2"></div>
+  <div class="hero-inner">
+    <div class="hero-chip reveal">
+      <span class="chip-dot"></span>
+      Centro Fisioterapico &middot; Racconigi (CN)
+    </div>
+    <h1 class="reveal">
+      Torna a muoverti<br>
+      senza <em>dolore.</em>
+    </h1>
+    <p class="hero-sub reveal">
+      Un team di professionisti qualificati ti accompagna dalla valutazione alla completa guarigione.
+      Prenota quando vuoi &mdash; anche la domenica sera. Il nostro sistema di prenotazione risponde in pochi secondi.
+    </p>
+    <div class="hero-ctas reveal">
+      <a href="#prenota" class="btn-green">&#128197; Prenota la prima visita</a>
+      <a href="#servizi" class="btn-outline">Scopri i servizi</a>
+    </div>
+    <div class="hero-badge reveal">
+      <span style="color:var(--green);font-size:20px;line-height:1">&#9679;</span>
+      &nbsp;Risposta garantita in 20 secondi
+    </div>
+    <div class="hstats reveal">
+      <div><div class="hst-n">500+</div><div class="hst-l">Pazienti seguiti</div></div>
+      <div><div class="hst-n">15</div><div class="hst-l">Anni di attivit&agrave;</div></div>
+      <div><div class="hst-n">6</div><div class="hst-l">Specialit&agrave;</div></div>
+      <div><div class="hst-n">4.9&#9733;</div><div class="hst-l">Google</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section class="sec pain-sec">
+  <div class="si">
+    <div class="eye reveal">Problemi risolti</div>
+    <h2 class="reveal">Sappiamo cosa ti <em>preoccupa.</em></h2>
+    <p class="sub reveal">Abbiamo pensato a tutto. Prima ancora che tu arrivi da noi.</p>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <div class="pain-ico">&#128197;</div>
+        <div class="pain-tag">No-show</div>
+        <div class="pain-h">&ldquo;Non ricordi l&rsquo;appuntamento?<br>Ti avvisiamo noi.&rdquo;</div>
+        <div class="pain-b">Il nostro sistema di prenotazione ti manda un promemoria automatico 24 ore prima e 2 ore prima. Niente pi&ugrave; sedute saltate per dimenticanza.</div>
+        <div class="pain-sol">Reminder automatico via SMS e WhatsApp</div>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-ico">&#128260;</div>
+        <div class="pain-tag">Abbandono ciclo</div>
+        <div class="pain-h">&ldquo;Ti seguiamo per<br>tutto il percorso.&rdquo;</div>
+        <div class="pain-b">Sappiamo che a volte ci si ferma quando si sta meglio. Ma il ciclo incompleto spesso porta a ricadute. Il nostro staff ti segue passo per passo fino alla guarigione.</div>
+        <div class="pain-sol">Follow-up personalizzato dopo ogni seduta</div>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-ico">&#127769;</div>
+        <div class="pain-tag">Fuori orario</div>
+        <div class="pain-h">&ldquo;Prenota anche<br>la domenica sera.&rdquo;</div>
+        <div class="pain-b">Il sistema di prenotazione &egrave; attivo 24 ore su 24, 7 giorni su 7. Quando hai un momento libero &mdash; anche a mezzanotte &mdash; puoi prenotare la tua seduta.</div>
+        <div class="pain-sol">Prenotazione online sempre disponibile</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIZI -->
+<section class="sec" id="servizi">
+  <div class="si">
+    <div class="eye reveal">I nostri servizi</div>
+    <h2 class="reveal">Tutto quello che ti serve,<br><em>sotto un tetto.</em></h2>
+    <p class="sub reveal">Ogni trattamento &egrave; personalizzato sulla base della tua valutazione iniziale. Nessun protocollo standard &mdash; solo cura su misura.</p>
+    <div class="srv-grid">
+      <div class="srv-card reveal">
+        <div class="srv-ico">&#129461;</div>
+        <div class="srv-h">Fisioterapia</div>
+        <div class="srv-b">Trattamento di dolori muscolo-scheletrici, cervicali, lombari, spalle e articolazioni. Terapia manuale e esercizi terapeutici specifici.</div>
+        <a href="#prenota" class="srv-link">Prenota &rarr;</a>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-ico">&#127939;</div>
+        <div class="srv-h">Riabilitazione</div>
+        <div class="srv-b">Percorsi di recupero post-operatorio e post-traumatico. Protocolli personalizzati per tornare alle attivit&agrave; quotidiane e sportive.</div>
+        <a href="#prenota" class="srv-link">Prenota &rarr;</a>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-ico">&#129330;</div>
+        <div class="srv-h">Massoterapia</div>
+        <div class="srv-b">Massaggi terapeutici per il rilassamento muscolare, riduzione della tensione e miglioramento della circolazione. Decontratturante e sportivo.</div>
+        <a href="#prenota" class="srv-link">Prenota &rarr;</a>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-ico">&#129485;</div>
+        <div class="srv-h">Posturologia</div>
+        <div class="srv-b">Analisi della postura e programmi di rieducazione posturale. Prevenzione di dolori cronici da postura scorretta.</div>
+        <a href="#prenota" class="srv-link">Prenota &rarr;</a>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-ico">&#128167;</div>
+        <div class="srv-h">Linfodrenaggio</div>
+        <div class="srv-b">Tecnica manuale per stimolare il sistema linfatico, ridurre gonfiori e ristagni. Indicato dopo interventi chirurgici e in caso di linfedema.</div>
+        <a href="#prenota" class="srv-link">Prenota &rarr;</a>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-ico">&#9877;&#65039;</div>
+        <div class="srv-h">Osteopatia</div>
+        <div class="srv-b">Approccio globale al paziente. Trattamento di disfunzioni strutturali, viscerali e cranio-sacrali. Prima visita osteopatica inclusa nella valutazione.</div>
+        <a href="#prenota" class="srv-link">Prenota &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="sec team-sec">
+  <div class="si">
+    <div class="eye reveal">Il nostro team</div>
+    <h2 class="reveal">Professionisti che ti <em>ascoltano.</em></h2>
+    <p class="sub reveal">Ogni membro del nostro staff &egrave; specializzato e aggiornato continuamente. La tua guarigione &egrave; nelle mani giuste.</p>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="t-av">MO</div>
+        <div class="t-name">Dr.ssa Martina Olivieri</div>
+        <div class="t-role">Fisioterapista</div>
+        <div class="t-desc">Laureata in Fisioterapia con specializzazione in riabilitazione muscolo-scheletrica. 12 anni di esperienza clinica, con focus su spalla e colonna vertebrale.</div>
+        <span class="t-badge">12 anni di esperienza</span>
+      </div>
+      <div class="team-card reveal">
+        <div class="t-av">AF</div>
+        <div class="t-name">Dr. Alessandro Ferrero</div>
+        <div class="t-role">Osteopata</div>
+        <div class="t-desc">Diploma in Osteopatia conseguito presso il C.O.M.E. Collaboration. Specializzato in approccio cranio-sacrale e trattamento dei disturbi viscerali. 8 anni di pratica.</div>
+        <span class="t-badge">Membro ROI</span>
+      </div>
+      <div class="team-card reveal">
+        <div class="t-av">EG</div>
+        <div class="t-name">Dr.ssa Elena Gallo</div>
+        <div class="t-role">Massoterapista &amp; Posturologa</div>
+        <div class="t-desc">Specializzata in linfodrenaggio manuale metodo Vodder e rieducazione posturale globale RPG. Accompagna i pazienti nel recupero della corretta postura da 10 anni.</div>
+        <span class="t-badge">Certificata Vodder</span>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- RECENSIONI -->
+<section class="sec">
+  <div class="si">
+    <div class="eye reveal">Cosa dicono di noi</div>
+    <h2 class="reveal">Oltre 500 pazienti<br><em>soddisfatti.</em></h2>
+    <p class="sub reveal">Leggi le loro parole. Sono persone come te che hanno scelto di non convivere con il dolore.</p>
+    <div class="rev-grid">
+      <div class="rev-card reveal">
+        <div class="rev-top">
+          <div class="rev-av">M</div>
+          <div><div class="rev-name">Marco B.</div><div class="rev-date">3 settimane fa</div></div>
+        </div>
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="rev-text">&ldquo;Avevo un dolore alla schiena da quasi un anno. Dopo sei sedute con la Dr.ssa Olivieri &egrave; quasi completamente sparito. Lo staff &egrave; gentilissimo e si capisce subito che sono dei veri professionisti.&rdquo;</div>
+        <div class="rev-src"><svg width="13" height="13" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Recensione Google verificata</div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="rev-top">
+          <div class="rev-av">S</div>
+          <div><div class="rev-name">Silvia T.</div><div class="rev-date">1 mese fa</div></div>
+        </div>
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="rev-text">&ldquo;Finalmente un centro dove ti ascoltano davvero! Ho fatto la riabilitazione post-operatoria al ginocchio e ho recuperato il 100%. La Dr.ssa Olivieri &egrave; bravissima e sempre disponibile.&rdquo;</div>
+        <div class="rev-src"><svg width="13" height="13" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Recensione Google verificata</div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="rev-top">
+          <div class="rev-av">R</div>
+          <div><div class="rev-name">Roberto C.</div><div class="rev-date">2 mesi fa</div></div>
+        </div>
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="rev-text">&ldquo;Prenotare &egrave; facilissimo e il sistema ti ricorda l&rsquo;appuntamento in automatico. Prezzi giusti, professionalit&agrave; alta e risultati veri. Lo consiglio senza riserve.&rdquo;</div>
+        <div class="rev-src"><svg width="13" height="13" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Recensione Google verificata</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COME FUNZIONA -->
+<section class="sec steps-sec">
+  <div class="si">
+    <div class="eye reveal">Come funziona</div>
+    <h2 class="reveal">Tre passi.<br><em>Zero complicazioni.</em></h2>
+    <div class="steps-grid" style="margin-top:44px">
+      <div class="step reveal">
+        <div class="step-n">1</div>
+        <div class="step-h">Prenota online o su WhatsApp</div>
+        <div class="step-b">Usa il modulo qui sotto, mandaci un messaggio su WhatsApp o chiamaci. Il sistema di prenotazione risponde in pochi secondi, anche la sera.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-n">2</div>
+        <div class="step-h">Prima visita e valutazione</div>
+        <div class="step-b">Al primo appuntamento il tuo fisioterapista ti valuta in modo completo. Ascoltiamo la tua storia, analizziamo il problema e costruiamo un piano su misura.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-n">3</div>
+        <div class="step-h">Percorso e guarigione</div>
+        <div class="step-b">Seguiamo ogni seduta con attenzione e aggiustiamo il percorso in base ai tuoi progressi. L&rsquo;obiettivo &egrave; farti tornare alla vita di prima &mdash; in modo stabile.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="sec form-sec" id="prenota">
+  <div class="si">
+    <div class="eye reveal" style="justify-content:center">Prenota ora</div>
+    <h2 class="reveal" style="text-align:center">La prima visita<br><em>inizia qui.</em></h2>
+    <p class="sub reveal" style="text-align:center;margin-left:auto;margin-right:auto">
+      Compila il modulo. Il nostro staff ti ricontatta entro 20 secondi per confermare il tuo appuntamento.
+    </p>
+    <div class="form-wrap reveal">
+      <div id="fW">
+        <div class="form-h">Prenota la <em>prima visita</em></div>
+        <p class="form-p">Lascia i tuoi dati. Ti contattiamo subito per confermare data e ora.</p>
+        <div class="f2">
+          <div class="ff"><label>Nome e cognome <span class="req">*</span></label><input type="text" placeholder="Mario Rossi" id="fn"></div>
+          <div class="ff"><label>Telefono / WhatsApp <span class="req">*</span></label><input type="tel" placeholder="+39 333 000 0000" id="ftel"></div>
+        </div>
+        <div class="ff">
+          <label>Tipo di problema</label>
+          <select id="fprob">
+            <option value="">Seleziona...</option>
+            <option>Dolore cervicale o alla schiena</option>
+            <option>Spalla, gomito o polso</option>
+            <option>Ginocchio, anca o caviglia</option>
+            <option>Recupero post-operatorio</option>
+            <option>Infortunio sportivo</option>
+            <option>Postura e prevenzione</option>
+            <option>Linfedema o gonfiore</option>
+            <option>Altro / non so ancora</option>
+          </select>
+        </div>
+        <div class="ff">
+          <label>Preferenza orario</label>
+          <select id="fdisп">
+            <option value="">Qualsiasi orario</option>
+            <option>Mattina (8:00 &ndash; 13:00)</option>
+            <option>Pomeriggio (14:00 &ndash; 18:00)</option>
+            <option>Sera (18:00 &ndash; 20:00)</option>
+          </select>
+        </div>
+        <button class="form-btn" id="fBtn" onclick="sub()">&#128197; Richiedi appuntamento</button>
+        <p id="fErr" class="form-err">Si &egrave; verificato un errore. Riprova tra poco &mdash; o <a href="https://wa.me/39NUMERO_CLIENTE?text=Ciao%20FisioSalute%2C%20vorrei%20prenotare" target="_blank">scrivici su WhatsApp</a>.</p>
+        <p class="form-micro">Risposta garantita in 20 secondi &nbsp;&middot;&nbsp; Nessun impegno</p>
+      </div>
+      <div class="form-ok" id="okM">
+        <div class="ok-ico">&#9989;</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:24px;margin-bottom:10px;color:var(--text)">Richiesta inviata!</h3>
+        <p style="font-size:15px;color:var(--mid);line-height:1.75;font-weight:300">
+          Il nostro staff ti contatter&agrave; entro pochi secondi per confermare il tuo appuntamento.<br><br>
+          A presto da <strong>FisioSalute</strong>!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fw">
+    <div class="frow">
+      <div>
+        <div class="flogo">Fisio<span>Salute</span></div>
+        <p class="fdesc">Centro fisioterapico a Racconigi (CN). Un team qualificato al servizio della tua salute, con un sistema di prenotazione sempre attivo.</p>
+        <div class="faddr">
+          &#128205; Via Roma 14, 12035 Racconigi (CN)<br>
+          &#128222; <a href="tel:TELEFONO_CLIENTE" style="color:rgba(255,255,255,.65);text-decoration:none">TELEFONO_CLIENTE</a><br>
+          &#9993;&#65039; <a href="mailto:EMAIL_CLIENTE" style="color:rgba(255,255,255,.65);text-decoration:none">EMAIL_CLIENTE</a>
+        </div>
+      </div>
+      <div class="fcol">
+        <h5>Orari</h5>
+        <ul>
+          <li><span style="color:rgba(255,255,255,.9)">Lun &ndash; Ven</span><br>8:00 &ndash; 20:00</li>
+          <li><span style="color:rgba(255,255,255,.9)">Sabato</span><br>9:00 &ndash; 13:00</li>
+          <li><span style="color:rgba(255,255,255,.9)">Domenica</span><br>Prenotazione online</li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h5>Servizi</h5>
+        <ul>
+          <li><a href="#servizi">Fisioterapia</a></li>
+          <li><a href="#servizi">Riabilitazione</a></li>
+          <li><a href="#servizi">Osteopatia</a></li>
+          <li><a href="#servizi">Massoterapia</a></li>
+          <li><a href="#servizi">Linfodrenaggio</a></li>
+          <li><a href="#prenota">Prenota ora</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>&copy; 2026 Centro FisioSalute &middot; P.IVA PIVA_FITTIZIA &middot; Tutti i diritti riservati</span>
+      <span><a href="#">Privacy Policy</a> &middot; <a href="#">Cookie</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a id="wa-float"
+   href="https://wa.me/39NUMERO_CLIENTE?text=Ciao%20FisioSalute%2C%20vorrei%20prenotare"
+   target="_blank" aria-label="Scrivici su WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 32 32" fill="white"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.496.648 4.84 1.78 6.876L2 30l7.312-1.752A13.94 13.94 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.5a11.46 11.46 0 01-5.84-1.6l-.42-.252-4.34 1.04 1.068-4.224-.276-.432A11.46 11.46 0 014.5 16C4.5 9.648 9.648 4.5 16 4.5S27.5 9.648 27.5 16 22.352 27.5 16 27.5zm6.3-8.572c-.344-.172-2.036-1.004-2.352-1.116-.316-.116-.544-.172-.772.172-.228.348-.884 1.116-1.084 1.348-.196.228-.396.256-.74.084-.344-.172-1.452-.536-2.764-1.704-1.02-.908-1.712-2.028-1.912-2.372-.196-.344-.02-.528.148-.7.152-.152.344-.396.516-.596.168-.196.224-.336.336-.56.112-.224.056-.42-.028-.592-.084-.172-.772-1.864-1.056-2.552-.28-.672-.564-.58-.772-.592l-.656-.012a1.26 1.26 0 00-.912.428c-.316.344-1.2 1.172-1.2 2.856s1.228 3.312 1.4 3.54c.172.228 2.416 3.688 5.856 5.172.82.352 1.46.56 1.956.716.824.26 1.572.224 2.164.136.66-.1 2.036-.832 2.324-1.636.288-.8.288-1.492.2-1.636-.084-.148-.312-.232-.656-.408z"/></svg>
+</a>
+
+<!-- CHAT WIDGET -->
+<button id="chat-btn" aria-label="Scrivi allo staff" onclick="toggleChat()">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+</button>
+
+<div id="chat-box">
+  <div class="chat-head">
+    <div class="chat-head-l">
+      <div class="chat-av">&#128172;</div>
+      <div>
+        <div class="chat-info-name">FisioSalute</div>
+        <div class="chat-status">Staff disponibile</div>
+      </div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()" aria-label="Chiudi">&#10005;</button>
+  </div>
+  <div class="chat-msgs" id="chatMsgs">
+    <div class="cmsg bot">Ciao! Come posso aiutarti? &#128522;</div>
+  </div>
+  <div class="chat-inp">
+    <input type="text" id="chatIn" placeholder="Scrivi un messaggio..." onkeypress="if(event.key==='Enter')sendChat()">
+    <button onclick="sendChat()" aria-label="Invia">&#10148;</button>
+  </div>
+</div>
+
+<script>
+/* NAV */
+addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>40);
+  document.getElementById('resp-badge').classList.toggle('on',scrollY>160);
+});
+/* REVEAL */
+const ro=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('on')}),{threshold:.09});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+/* WA + CHAT dopo 2s */
+setTimeout(()=>{
+  document.getElementById('wa-float').classList.add('on');
+  document.getElementById('chat-btn').classList.add('on');
+},2000);
+/* FORM */
+async function sub(){
+  const n=document.getElementById('fn').value.trim();
+  const t=document.getElementById('ftel').value.trim();
+  if(!n||!t){alert('Inserisci nome e telefono per procedere.');return;}
+  const btn=document.getElementById('fBtn');
+  btn.disabled=true;
+  btn.innerHTML='<span class="spin"></span> Invio in corso...';
+  document.getElementById('fErr').style.display='none';
+  const ctrl=new AbortController();
+  const tid=setTimeout(()=>ctrl.abort(),8000);
+  try{
+    const res=await fetch('WEBHOOK_FISIOSALUTE',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      signal:ctrl.signal,
+      body:JSON.stringify({nome:n,telefono:t,problema:document.getElementById('fprob').value,disponibilita:document.getElementById('fdisп').value})
+    });
+    clearTimeout(tid);
+    if(!res.ok) throw new Error('status '+res.status);
+    document.getElementById('fW').style.display='none';
+    document.getElementById('okM').classList.add('on');
+  }catch(e){
+    clearTimeout(tid);
+    btn.disabled=false;
+    btn.innerHTML='&#128197; Richiedi appuntamento';
+    document.getElementById('fErr').style.display='block';
+  }
+}
+/* CHAT DEMO */
+let chatOpen=false;
+function toggleChat(){
+  chatOpen=!chatOpen;
+  const box=document.getElementById('chat-box');
+  if(chatOpen){box.style.display='flex';setTimeout(()=>box.classList.add('open'),10);document.getElementById('chatIn').focus();}
+  else{box.classList.remove('open');setTimeout(()=>box.style.display='none',260);}
+}
+function sendChat(){
+  const inp=document.getElementById('chatIn');
+  const txt=inp.value.trim();if(!txt)return;
+  const msgs=document.getElementById('chatMsgs');
+  const u=document.createElement('div');u.className='cmsg usr';u.textContent=txt;msgs.appendChild(u);
+  inp.value='';msgs.scrollTop=msgs.scrollHeight;
+  setTimeout(()=>{
+    const b=document.createElement('div');b.className='cmsg bot';
+    b.textContent='Grazie! Il nostro staff ti ricontatta entro pochi minuti 😊';
+    msgs.appendChild(b);msgs.scrollTop=msgs.scrollHeight;
+  },900);
+}
+</script>
+</body>
+</html>

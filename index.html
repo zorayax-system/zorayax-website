@@ -1,0 +1,798 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZORAYAX — Il Tuo Business Non Perde Più Clienti</title>
+<meta name="description" content="Installiamo un sistema automatico che risponde ai tuoi clienti, gestisce le richieste e prenota appuntamenti. Mentre tu lavori.">
+<link rel="canonical" href="https://zorayax.com">
+<meta property="og:title" content="ZORAYAX — Il Tuo Business Non Perde Più Clienti">
+<meta property="og:description" content="Installiamo un sistema automatico che risponde ai tuoi clienti, gestisce le richieste e prenota appuntamenti. Mentre tu lavori.">
+<meta property="og:image" content="https://zorayax.com/ZORAYAX_logo.png">
+<meta property="og:url" content="https://zorayax.com">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ZORAYAX — Il Tuo Business Non Perde Più Clienti">
+<meta name="twitter:description" content="Installiamo un sistema automatico che risponde ai tuoi clienti, gestisce le richieste e prenota appuntamenti. Mentre tu lavori.">
+<meta name="twitter:image" content="https://zorayax.com/ZORAYAX_logo.png"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#05080F;
+  --deep:#070C18;
+  --navy:#0A1422;
+  --panel:#0E1C32;
+  --card:#121F38;
+  --cyan:#00CFFF;
+  --cyan2:#009FCC;
+  --silver:#C4D4EC;
+  --cream:#E8EEFF;
+  --muted:rgba(170,195,235,0.45);
+  --rim:rgba(0,180,255,0.13);
+  --green:#22D46A;
+  --r:10px;
+}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--cream);overflow-x:hidden;line-height:1.6}
+canvas#bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 6%;transition:all .32s;
+}
+nav.s{background:rgba(5,8,15,.96);backdrop-filter:blur(22px);border-bottom:1px solid var(--rim);padding:12px 6%}
+.logo{height:44px;object-fit:contain;mix-blend-mode:screen;filter:brightness(1.05)}
+.nav-cta{
+  background:var(--cyan);color:#020A14;
+  padding:12px 26px;border-radius:var(--r);
+  font-size:14px;font-weight:700;border:none;cursor:pointer;
+  transition:all .22s;text-decoration:none;letter-spacing:.3px;
+}
+.nav-cta:hover{background:var(--cyan2);transform:translateY(-1px);box-shadow:0 0 28px rgba(0,207,255,.35)}
+
+/* ── HERO ── */
+.hero{
+  position:relative;z-index:1;
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:130px 6% 80px;overflow:hidden;
+}
+.hero-halo{
+  position:absolute;top:-5%;left:50%;transform:translateX(-50%);
+  width:1000px;height:660px;
+  background:radial-gradient(ellipse at 50% 5%,rgba(0,200,255,.18) 0%,transparent 65%);
+  pointer-events:none;
+}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(0,200,255,.3);background:rgba(0,200,255,.06);
+  padding:8px 20px;border-radius:100px;
+  font-size:13px;font-weight:500;color:rgba(0,215,255,.9);
+  margin-bottom:36px;opacity:0;animation:up .7s .1s ease forwards;
+}
+.chip-dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+h1{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(42px,8.5vw,108px);
+  line-height:.94;letter-spacing:-3.5px;
+  opacity:0;animation:up .7s .2s ease forwards;
+}
+h1 em{font-style:italic;color:var(--cyan)}
+h1 .ghost{opacity:.2}
+
+.hero-sub{
+  font-size:clamp(16px,1.8vw,20px);color:var(--muted);
+  max-width:580px;line-height:1.72;font-weight:300;
+  margin:26px auto 0;opacity:0;animation:up .7s .3s ease forwards;
+}
+.hero-ctas{
+  display:flex;gap:14px;flex-wrap:wrap;justify-content:center;
+  margin-top:42px;opacity:0;animation:up .7s .4s ease forwards;
+}
+.btn-main{
+  background:var(--cyan);color:#020A14;
+  padding:17px 40px;border-radius:var(--r);
+  font-size:15px;font-weight:700;border:none;cursor:pointer;
+  transition:all .25s;text-decoration:none;display:inline-flex;align-items:center;gap:9px;
+}
+.btn-main:hover{background:var(--cyan2);transform:translateY(-3px);box-shadow:0 14px 44px rgba(0,207,255,.38)}
+.btn-ghost{
+  background:transparent;color:var(--silver);
+  padding:17px 34px;border-radius:var(--r);font-size:15px;
+  border:1px solid var(--rim);cursor:pointer;
+  transition:all .25s;text-decoration:none;
+}
+.btn-ghost:hover{border-color:rgba(0,200,255,.4);transform:translateY(-3px)}
+
+.hero-stats{
+  display:flex;gap:52px;flex-wrap:wrap;justify-content:center;
+  margin-top:80px;opacity:0;animation:up .7s .5s ease forwards;
+}
+.hs{text-align:center}
+.hs-n{font-family:'Instrument Serif',serif;font-style:italic;font-size:42px;line-height:1;color:var(--cyan)}
+.hs-l{font-size:11px;color:var(--muted);letter-spacing:1.8px;text-transform:uppercase;margin-top:4px}
+@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+/* ── LAYOUT ── */
+.rule{border:none;border-top:1px solid var(--rim);position:relative;z-index:1}
+.sec{position:relative;z-index:1;padding:100px 6%;max-width:1180px;margin:0 auto}
+.eye{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.eye::before{content:'';width:20px;height:1px;background:var(--cyan)}
+.sh{font-family:'Instrument Serif',serif;font-size:clamp(30px,5vw,60px);line-height:1.04;letter-spacing:-2px;margin-bottom:20px}
+.sh em{font-style:italic;color:var(--cyan)}
+.sp{font-size:17px;color:var(--muted);max-width:560px;line-height:1.75;font-weight:300}
+
+/* ── PAIN ── */
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:56px;background:var(--rim);border-radius:20px;overflow:hidden}
+.pain{background:var(--deep);padding:44px 40px;transition:background .25s;cursor:default}
+.pain:hover{background:var(--panel)}
+.pain-n{font-size:11px;font-weight:700;letter-spacing:2.5px;color:var(--cyan);opacity:.5;margin-bottom:18px;text-transform:uppercase}
+.pain-h{font-family:'Instrument Serif',serif;font-size:22px;line-height:1.25;margin-bottom:12px}
+.pain-b{font-size:14px;color:var(--muted);line-height:1.8;font-weight:300}
+.pain-tag{display:inline-block;margin-top:20px;border:1px solid rgba(0,207,255,.2);background:rgba(0,207,255,.06);padding:5px 14px;border-radius:100px;font-size:12px;color:rgba(0,207,255,.85);font-weight:500}
+
+/* ── SOLUTION ── */
+.sol-wrap{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-top:56px}
+.chat-mock{background:var(--panel);border:1px solid var(--rim);border-radius:20px;padding:30px;position:sticky;top:120px}
+.chat-top{display:flex;align-items:center;gap:10px;padding-bottom:16px;border-bottom:1px solid var(--rim);margin-bottom:20px}
+.live{width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 1.5s infinite}
+.chat-label{font-size:12px;color:var(--muted)}
+.chat-time{font-size:12px;color:var(--muted);margin-left:auto}
+.msg{margin-bottom:12px}
+.mwho{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px;color:var(--muted)}
+.mwho.a{color:var(--cyan)}
+.bubble{padding:12px 16px;border-radius:12px;font-size:13.5px;line-height:1.65;display:inline-block;max-width:92%}
+.bubble.c{background:var(--card);color:var(--silver)}
+.bubble.ai{background:rgba(0,207,255,.1);border:1px solid rgba(0,207,255,.18);color:var(--cream)}
+.tdots{display:flex;gap:5px;padding:12px 16px}
+.td{width:7px;height:7px;border-radius:50%;background:var(--cyan);animation:td 1.2s infinite}
+.td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
+@keyframes td{0%,60%,100%{transform:none;opacity:.35}30%{transform:translateY(-7px);opacity:1}}
+.sol-points{display:flex;flex-direction:column;gap:32px}
+.sol-item{display:flex;gap:18px}
+.sol-ico{width:50px;height:50px;flex-shrink:0;border-radius:13px;background:rgba(0,207,255,.07);border:1px solid var(--rim);display:flex;align-items:center;justify-content:center;font-size:22px;margin-top:2px}
+.sol-h{font-family:'Instrument Serif',serif;font-size:20px;margin-bottom:7px}
+.sol-b{font-size:14px;color:var(--muted);line-height:1.8;font-weight:300}
+
+/* ── BENEFITS ── */
+.ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:56px;background:var(--rim);border-radius:20px;overflow:hidden}
+.ben{background:var(--deep);padding:40px 36px;transition:background .25s}
+.ben:hover{background:var(--panel)}
+.ben-num{font-family:'Instrument Serif',serif;font-style:italic;font-size:52px;line-height:1;color:var(--cyan);margin-bottom:10px}
+.ben-h{font-family:'Instrument Serif',serif;font-size:19px;margin-bottom:8px}
+.ben-b{font-size:13px;color:var(--muted);line-height:1.8;font-weight:300}
+
+/* ── STEPS ── */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.stp{background:var(--deep);border:1px solid var(--rim);border-radius:20px;padding:40px 36px;text-align:center;transition:all .3s}
+.stp:hover{background:var(--panel);border-color:rgba(0,207,255,.3)}
+.stp-n{width:68px;height:68px;border-radius:50%;border:1px solid var(--rim);background:var(--card);display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-style:italic;font-size:26px;margin:0 auto 22px;transition:all .3s;color:var(--cyan)}
+.stp:hover .stp-n{background:var(--cyan);color:#020A14;border-color:var(--cyan);box-shadow:0 0 28px rgba(0,207,255,.35)}
+.stp-h{font-family:'Instrument Serif',serif;font-size:20px;margin-bottom:10px}
+.stp-b{font-size:14px;color:var(--muted);line-height:1.75}
+
+/* ── CASES ── */
+.cases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:56px;background:var(--rim);border-radius:20px;overflow:hidden}
+.case{background:var(--deep);padding:40px 36px;transition:background .25s}
+.case:hover{background:var(--panel)}
+.case-ico{font-size:34px;margin-bottom:14px}
+.case-role{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:10px}
+.case-h{font-family:'Instrument Serif',serif;font-size:22px;margin-bottom:10px}
+.case-b{font-size:14px;color:var(--muted);line-height:1.8;font-weight:300}
+.case-result{margin-top:18px;padding-top:18px;border-top:1px solid var(--rim);font-size:13px;color:var(--cyan);font-weight:600}
+
+/* ── CALC ── */
+.calc-wrap{background:var(--deep);border:1px solid var(--rim);border-radius:20px;padding:56px;margin-top:56px;position:relative;overflow:hidden}
+.calc-wrap::before{content:'';position:absolute;top:-60px;right:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(0,207,255,.09),transparent 65%);pointer-events:none}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+.c-title{font-family:'Instrument Serif',serif;font-size:26px;margin-bottom:8px}
+.c-sub{font-size:15px;color:var(--muted);margin-bottom:32px;font-weight:300;line-height:1.7}
+.fi{margin-bottom:26px}
+.fi label{display:block;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.rv{font-family:'Instrument Serif',serif;font-style:italic;font-size:28px;color:var(--cyan);margin-bottom:6px}
+input[type=range]{width:100%;accent-color:var(--cyan);cursor:pointer;height:4px}
+.res-box{background:var(--bg);border:1px solid rgba(0,207,255,.2);border-radius:16px;padding:36px;position:sticky;top:120px}
+.res-tag{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.res-big{font-family:'Instrument Serif',serif;font-style:italic;font-size:58px;line-height:1;color:var(--cyan);margin-bottom:4px}
+.res-period{font-size:14px;color:var(--muted);margin-bottom:26px}
+.rrow{display:flex;justify-content:space-between;margin-bottom:11px;font-size:14px}
+.rrow span:first-child{color:var(--muted)}
+.rrow span:last-child{font-weight:600}
+.rrow.hi span:last-child{color:var(--green);font-size:15px}
+
+/* ── FORM ── */
+.form-sec{position:relative;z-index:1;padding:0 6% 110px}
+.form-card{max-width:700px;margin:0 auto;background:var(--panel);border:1px solid var(--rim);border-radius:24px;padding:60px 56px;position:relative;overflow:hidden}
+.form-card::after{content:'';position:absolute;bottom:-70px;right:-70px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(0,207,255,.09),transparent 65%);pointer-events:none}
+.fh{font-family:'Instrument Serif',serif;font-size:36px;letter-spacing:-1px;margin-bottom:8px}
+.fh em{font-style:italic;color:var(--cyan)}
+.fp{font-size:16px;color:var(--muted);margin-bottom:40px;font-weight:300;line-height:1.6}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ff{margin-bottom:18px}
+.ff label{display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.ff input,.ff select,.ff textarea{width:100%;background:var(--navy);border:1px solid var(--rim);color:var(--cream);padding:14px 18px;border-radius:var(--r);font-size:15px;font-family:'Outfit',sans-serif;outline:none;transition:all .2s}
+.ff input:focus,.ff select:focus,.ff textarea:focus{border-color:rgba(0,207,255,.5);box-shadow:0 0 0 3px rgba(0,207,255,.07)}
+.ff select option{background:var(--panel)}
+.ff textarea{resize:none;height:90px;line-height:1.6}
+.req{color:var(--cyan)}
+.sbtn{width:100%;padding:18px;border-radius:var(--r);background:var(--cyan);color:#020A14;font-size:16px;font-weight:700;font-family:'Outfit',sans-serif;border:none;cursor:pointer;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .25s}
+.sbtn:hover{background:var(--cyan2);transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,207,255,.38)}
+.fmicro{text-align:center;font-size:13px;color:var(--muted);margin-top:14px}
+.ok{display:none;text-align:center;padding:24px 0}
+.ok.on{display:block}
+.ok-i{font-size:60px;margin-bottom:18px;animation:pop .5s ease}
+@keyframes pop{from{transform:scale(0) rotate(-12deg)}to{transform:scale(1) rotate(0)}}
+.ok h3{font-family:'Instrument Serif',serif;font-size:28px;margin-bottom:10px}
+.ok p{font-size:16px;color:var(--muted);font-weight:300;line-height:1.7}
+
+/* ── FOOTER ── */
+footer{position:relative;z-index:1;background:var(--deep);border-top:1px solid var(--rim);padding:56px 6% 28px}
+.fw{max-width:1180px;margin:0 auto}
+.frow{display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px;margin-bottom:44px}
+.flogo{height:44px;object-fit:contain;mix-blend-mode:screen;filter:brightness(1.05);margin-bottom:14px;display:block}
+.fdesc{font-size:14px;color:var(--muted);line-height:1.8;font-weight:300;max-width:280px}
+.fphone{display:block;margin-top:14px;font-family:'Instrument Serif',serif;font-style:italic;font-size:20px;color:var(--cyan);text-decoration:none}
+.fcol h5{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.fcol a{font-size:14px;color:var(--muted);text-decoration:none;transition:color .2s}
+.fcol a:hover{color:var(--cream)}
+.fbot{border-top:1px solid var(--rim);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--muted)}
+.fbot a{color:var(--muted);text-decoration:none}.fbot a:hover{color:var(--cream)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .62s ease,transform .62s ease}
+.reveal.on{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:14px 5%}
+  .pain-grid,.sol-wrap,.ben-grid,.cases-grid,.calc-grid{grid-template-columns:1fr}
+  .steps-grid{grid-template-columns:1fr}
+  .sol-wrap{gap:40px}
+  .chat-mock{position:static}
+  .res-box{position:static}
+  .form-card{padding:36px 24px}
+  .r2{grid-template-columns:1fr}
+  .frow{flex-direction:column}
+  .hero-stats{gap:28px}
+  .calc-wrap{padding:36px 24px}
+  h1{letter-spacing:-2px}
+}
+
+/* ── SPINNER ── */
+.spin{display:inline-block;width:18px;height:18px;border:2px solid rgba(2,10,20,.3);border-top-color:#020A14;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sbtn:disabled{opacity:.7;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+/* ── WA FLOAT ── */
+#wa-float{position:fixed;bottom:24px;left:24px;z-index:9998;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.3);text-decoration:none;opacity:0;pointer-events:none;transition:opacity .4s ease,transform .2s ease}
+#wa-float.on{opacity:1;pointer-events:auto}
+#wa-float:hover{transform:scale(1.1)}</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <img src="ZORAYAX_logo.png" alt="ZORAYAX" class="logo" onerror="this.outerHTML='<span style=\'font-family:Outfit,sans-serif;font-size:22px;font-weight:800;letter-spacing:-1px;color:#00CFFF\'>ZORAYAX</span>'">
+  <a href="#prenota" class="nav-cta">Parlaci gratis →</a>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-halo"></div>
+
+  <div class="chip"><span class="chip-dot"></span>Installato in 48 ore · Senza cambiare nulla nel tuo lavoro</div>
+
+  <h1>
+    <span class="ghost">Il tuo telefono squilla.</span><br>
+    I clienti non <em>aspettano.</em>
+  </h1>
+
+  <p class="hero-sub">
+    Installiamo un sistema automatico che risponde ai tuoi clienti, gestisce le richieste e prenota appuntamenti — anche quando sei occupato, di sera o nel weekend.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="#prenota" class="btn-main">📞 Voglio saperne di più — è gratis</a>
+    <a href="#come-funziona" class="btn-ghost">Vedi come funziona →</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hs"><div class="hs-n">24/7</div><div class="hs-l">Sempre disponibile</div></div>
+    <div class="hs"><div class="hs-n">&lt; 48h</div><div class="hs-l">Per essere attivo</div></div>
+    <div class="hs"><div class="hs-n">0</div><div class="hs-l">Competenze tecniche richieste</div></div>
+    <div class="hs"><div class="hs-n">14gg</div><div class="hs-l">Garanzia soddisfatti</div></div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ══════════════════════════════════════════
+     PROBLEMI
+══════════════════════════════════════════ -->
+<section class="sec">
+  <div class="eye reveal">Il problema</div>
+  <h2 class="sh reveal">Ti è mai <em>capitato?</em></h2>
+  <p class="sp reveal">Non serve essere un'azienda grande per perdere clienti ogni giorno. Bastano questi quattro momenti.</p>
+
+  <div class="pain-grid">
+    <div class="pain reveal">
+      <div class="pain-n">01</div>
+      <div class="pain-h">Stai lavorando. Il telefono squilla. Non puoi rispondere.</div>
+      <div class="pain-b">Sei in cantiere, dal cliente, sotto al lavandino. Il telefono squilla due volte e poi smette. Il cliente ha già chiamato il concorrente. Questo succede ogni giorno — e tu non lo sai nemmeno.</div>
+      <span class="pain-tag">Ogni chiamata persa = un cliente perso</span>
+    </div>
+    <div class="pain reveal">
+      <div class="pain-n">02</div>
+      <div class="pain-h">Ti arrivano messaggi. Li leggi. Li dimentichi. Il cliente non sente più niente.</div>
+      <div class="pain-b">WhatsApp, email, moduli del sito. Quando hai tempo di rispondere, è già tardi. Il cliente ha già trovato qualcun altro. Non per colpa tua — semplicemente perché non hai le mani libere.</div>
+      <span class="pain-tag">Messaggi ignorati = reputazione danneggiata</span>
+    </div>
+    <div class="pain reveal">
+      <div class="pain-n">03</div>
+      <div class="pain-h">Passi ore a fissare appuntamenti avanti e indietro.</div>
+      <div class="pain-b">Telefonate, controproposte, disdette all'ultimo minuto. Ogni appuntamento richiede tre messaggi. Sono ore della tua settimana che spariscono in cose che potrebbero andare da sole.</div>
+      <span class="pain-tag">2-3 ore perse a settimana solo per i calendari</span>
+    </div>
+    <div class="pain reveal">
+      <div class="pain-n">04</div>
+      <div class="pain-h">Rispondi sempre alle stesse domande. Ogni giorno. Da anni.</div>
+      <div class="pain-b">"Quanto costa?" "Siete disponibili sabato?" "Fate anche questo tipo di lavoro?" Le stesse domande, decine di volte al giorno. Il tuo tempo vale troppo per rispondere sempre alla stessa cosa.</div>
+      <span class="pain-tag">Tempo prezioso sprecato su domande ripetitive</span>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ══════════════════════════════════════════
+     SOLUZIONE
+══════════════════════════════════════════ -->
+<section class="sec">
+  <div class="eye reveal">La soluzione</div>
+  <h2 class="sh reveal">Un assistente automatico<br>che <em>non si ferma mai.</em></h2>
+
+  <div class="sol-wrap">
+    <div class="chat-mock reveal">
+      <div class="chat-top">
+        <div class="live"></div>
+        <span class="chat-label">Sistema attivo — Idraulica Rossi</span>
+        <span class="chat-time">23:41</span>
+      </div>
+      <div class="msg">
+        <div class="mwho">Cliente</div>
+        <div class="bubble c">Buonasera, ho un guasto urgente. È ancora possibile fissare qualcosa?</div>
+      </div>
+      <div class="msg">
+        <div class="mwho a">✦ Assistente automatico</div>
+        <div class="bubble ai">Buonasera! Certo, sono qui per aiutarla. Può dirmi di che tipo di problema si tratta e il suo indirizzo?</div>
+      </div>
+      <div class="msg">
+        <div class="mwho">Cliente</div>
+        <div class="bubble c">Perdita d'acqua, Via Roma 14, Milano, terzo piano.</div>
+      </div>
+      <div class="msg">
+        <div class="mwho a">✦ Assistente automatico</div>
+        <div class="bubble ai">Perfetto, ho registrato tutto. Domani mattina alle 8:30 va bene? Il tecnico sarà da lei in Via Roma 14. Le mando conferma via SMS.</div>
+      </div>
+      <div class="tdots"><div class="td"></div><div class="td"></div><div class="td"></div></div>
+      <div style="margin-top:12px;padding:12px 16px;background:rgba(34,212,106,.07);border:1px solid rgba(34,212,106,.18);border-radius:10px;font-size:13px;color:#22D46A">
+        ✓ Appuntamento prenotato — nessun intervento umano
+      </div>
+    </div>
+
+    <div class="sol-points">
+      <div class="sol-item reveal">
+        <div class="sol-ico">📞</div>
+        <div>
+          <div class="sol-h">Risponde sempre, in italiano corretto</div>
+          <div class="sol-b">Il sistema gestisce chiamate, messaggi e richieste online — di giorno, di notte, nel weekend. Il tuo cliente ottiene sempre una risposta professionale, anche quando sei occupato.</div>
+        </div>
+      </div>
+      <div class="sol-item reveal">
+        <div class="sol-ico">📅</div>
+        <div>
+          <div class="sol-h">Prenota appuntamenti da solo</div>
+          <div class="sol-b">Controlla la tua disponibilità e fissa l'appuntamento direttamente nella conversazione. Nessun avanti e indietro di messaggi. Tu trovi tutto già organizzato nel calendario.</div>
+        </div>
+      </div>
+      <div class="sol-item reveal">
+        <div class="sol-ico">💬</div>
+        <div>
+          <div class="sol-h">Risponde alle domande frequenti</div>
+          <div class="sol-b">Orari, servizi, prezzi indicativi, zona di copertura. Il sistema conosce la tua azienda e risponde al posto tuo — con le tue parole, nel tuo stile.</div>
+        </div>
+      </div>
+      <div class="sol-item reveal">
+        <div class="sol-ico">⭐</div>
+        <div>
+          <div class="sol-h">Raccoglie le recensioni per te</div>
+          <div class="sol-b">Dopo ogni lavoro, il sistema contatta automaticamente il cliente e lo invita a lasciare una recensione su Google. Le tue 5 stelle crescono senza che tu faccia nulla.</div>
+        </div>
+      </div>
+      <div class="sol-item reveal">
+        <div class="sol-ico">🔁</div>
+        <div>
+          <div class="sol-h">Richiama i vecchi clienti</div>
+          <div class="sol-b">Ogni sei mesi il sistema contatta chi non si fa più vivo. Un messaggio semplice, nel momento giusto. Loro tornano — e tu non hai fatto niente.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ══════════════════════════════════════════
+     BENEFICI
+══════════════════════════════════════════ -->
+<section class="sec">
+  <div class="eye reveal">Benefici concreti</div>
+  <h2 class="sh reveal">Cosa cambia davvero<br><em>nella tua azienda.</em></h2>
+  <div class="ben-grid">
+    <div class="ben reveal">
+      <div class="ben-num">100%</div>
+      <div class="ben-h">Nessuna chiamata persa</div>
+      <div class="ben-b">Ogni richiesta viene raccolta, registrata e gestita. Anche alle 23:00 di domenica. Il tuo business non dorme mai — anche se tu lo fai.</div>
+    </div>
+    <div class="ben reveal">
+      <div class="ben-num">3×</div>
+      <div class="ben-h">Più appuntamenti prenotati</div>
+      <div class="ben-b">I clienti prenotano subito, senza aspettare che tu risponda il giorno dopo. Chi non aspetta, non va altrove.</div>
+    </div>
+    <div class="ben reveal">
+      <div class="ben-num">+40%</div>
+      <div class="ben-h">Recensioni Google in più</div>
+      <div class="ben-b">Il sistema chiede la recensione al momento giusto — quando il cliente è ancora soddisfatto. Le tue stelle crescono in automatico ogni mese.</div>
+    </div>
+    <div class="ben reveal">
+      <div class="ben-num">5h</div>
+      <div class="ben-h">Risparmiate ogni settimana</div>
+      <div class="ben-b">Niente più messaggi da gestire uno per uno, niente più telefonate per fissare orari. Quel tempo lo puoi usare per lavorare — o per staccare.</div>
+    </div>
+    <div class="ben reveal">
+      <div class="ben-num">0</div>
+      <div class="ben-h">Competenze tecniche richieste</div>
+      <div class="ben-b">Installiamo tutto noi. Tu non tocchi niente di tecnico. Continui a lavorare come sempre — il sistema gira in silenzio.</div>
+    </div>
+    <div class="ben reveal">
+      <div class="ben-num">48h</div>
+      <div class="ben-h">Per essere attivo</div>
+      <div class="ben-b">Dalla prima chiamata con noi al sistema live: meno di due giorni. Configuriamo tutto, testiamo tutto, ti mostriamo come funziona.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ══════════════════════════════════════════
+     COME FUNZIONA
+══════════════════════════════════════════ -->
+<section class="sec" id="come-funziona">
+  <div class="eye reveal">Come funziona</div>
+  <h2 class="sh reveal">Tre passi.<br><em>Zero complicazioni.</em></h2>
+  <p class="sp reveal">Non devi capire come funziona il sistema. Devi solo vedere i risultati. Ecco come arriviamo da zero a operativo.</p>
+
+  <div class="steps-grid">
+    <div class="stp reveal">
+      <div class="stp-n">1</div>
+      <div class="stp-h">Chiamata gratuita di 20 minuti</div>
+      <div class="stp-b">Parliamo della tua azienda. Ti chiediamo come lavori, che tipo di clienti hai, quali sono i problemi più frequenti. Nessuna vendita forzata — solo ascolto.</div>
+    </div>
+    <div class="stp reveal">
+      <div class="stp-n">2</div>
+      <div class="stp-h">Configuriamo tutto noi</div>
+      <div class="stp-b">Installiamo e configuriamo il sistema in base alla tua azienda. Il tuo tono, i tuoi orari, i tuoi servizi. Tu non fai niente. Ci pensiamo noi.</div>
+    </div>
+    <div class="stp reveal">
+      <div class="stp-n">3</div>
+      <div class="stp-h">Vai live. I clienti vengono gestiti.</div>
+      <div class="stp-b">Il sistema è attivo. Risponde, prenota, raccoglie. Tu ricevi solo la notifica: appuntamento fissato, cliente gestito. Ogni settimana ricevi il report con i numeri.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ══════════════════════════════════════════
+     CALCOLATORE
+══════════════════════════════════════════ -->
+<section class="sec">
+  <div class="eye reveal">Calcolatore</div>
+  <h2 class="sh reveal">Quanto ti costa<br><em>non averlo?</em></h2>
+  <p class="sp reveal">Fai il conto tu stesso. Sposta i cursori e vedi quanto stai lasciando sul tavolo ogni mese.</p>
+
+  <div class="calc-wrap reveal">
+    <div class="calc-grid">
+      <div>
+        <div class="c-title">La tua situazione</div>
+        <p class="c-sub">I numeri del video lo dicono chiaro: il 30% delle chiamate vengono perse o ignorate. Con un valore medio per cliente di €100, ogni giorno spariscono centinaia di euro.</p>
+
+        <div class="fi">
+          <label>Chiamate ricevute al giorno</label>
+          <div class="rv" id="cV">20 chiamate</div>
+          <input type="range" min="5" max="150" value="20" step="1" id="cR" oninput="calc()">
+        </div>
+        <div class="fi">
+          <label>% chiamate perse o senza risposta</label>
+          <div class="rv" id="pV">30%</div>
+          <input type="range" min="5" max="70" value="30" step="1" id="pR" oninput="calc()">
+        </div>
+        <div class="fi">
+          <label>Valore medio per cliente (€)</label>
+          <div class="rv" id="vV">€ 200</div>
+          <input type="range" min="50" max="2000" value="200" step="10" id="vR" oninput="calc()">
+        </div>
+      </div>
+
+      <div class="res-box">
+        <div class="res-tag">Perdi ogni giorno</div>
+        <div class="res-big" id="rDay">€0</div>
+        <div class="res-period">di fatturato potenziale</div>
+        <div style="border-top:1px solid var(--rim);padding-top:18px">
+          <div class="rrow"><span>Clienti persi al giorno</span><span id="r1">—</span></div>
+          <div class="rrow"><span>Perdita mensile</span><span id="r2" style="color:var(--cyan)">—</span></div>
+          <div class="rrow"><span>Perdita annuale</span><span id="r3" style="color:var(--cyan)">—</span></div>
+          <div class="rrow hi" style="margin-top:14px;padding-top:14px;border-top:1px solid var(--rim)">
+            <span>Con ZORAYAX recuperi</span><span id="r4">—</span>
+          </div>
+        </div>
+        <a href="#prenota" style="display:flex;justify-content:center;align-items:center;margin-top:20px;padding:15px;border-radius:var(--r);background:var(--cyan);color:#020A14;text-decoration:none;font-size:14px;font-weight:700">
+          Risolvi questo problema →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ══════════════════════════════════════════
+     CASI D'USO
+══════════════════════════════════════════ -->
+<section class="sec">
+  <div class="eye reveal">Chi lo usa</div>
+  <h2 class="sh reveal">Funziona per chi<br><em>lavora sul campo.</em></h2>
+  <p class="sp reveal">Non importa il settore. Se hai clienti che chiamano e appuntamenti da gestire, il sistema funziona per te.</p>
+
+  <div class="cases-grid">
+    <div class="case reveal">
+      <div class="case-ico">🔧</div>
+      <div class="case-role">Idraulico · Elettricista · Termoidraulico</div>
+      <div class="case-h">Niente più chiamate perse durante il lavoro</div>
+      <div class="case-b">Sei in cantiere, sotto al lavandino, sul tetto. Il sistema risponde per te, raccoglie i dati del cliente e prenota l'appuntamento. Tu trovi tutto già pronto quando hai un momento libero.</div>
+      <div class="case-result">↑ Media: 8-12 nuovi appuntamenti al mese recuperati</div>
+    </div>
+    <div class="case reveal">
+      <div class="case-ico">🦷</div>
+      <div class="case-role">Dentista · Studio medico · Clinica</div>
+      <div class="case-h">Prenotazioni gestite anche fuori orario</div>
+      <div class="case-b">I pazienti chiamano anche la sera e il weekend. Il sistema raccoglie la richiesta, risponde, prenota il primo slot disponibile e manda la conferma via SMS. La reception respira.</div>
+      <div class="case-result">↑ Media: riduzione del 60% delle chiamate in studio</div>
+    </div>
+    <div class="case reveal">
+      <div class="case-ico">🚗</div>
+      <div class="case-role">Officina · Carrozzeria · Gommista</div>
+      <div class="case-h">Meno telefonate, più lavoro fatto</div>
+      <div class="case-b">Le domande sono sempre le stesse: "quanto costa cambiare le gomme?", "quando siete liberi?", "fate anche la revisione?". Il sistema risponde automaticamente e prenota il cliente.</div>
+      <div class="case-result">↑ Media: 5 ore risparmiate a settimana in telefonate</div>
+    </div>
+    <div class="case reveal">
+      <div class="case-ico">🧘</div>
+      <div class="case-role">Fisioterapista · Psicologo · Clinica privata</div>
+      <div class="case-h">Meno chiamate gestite manualmente, più pazienti seguiti</div>
+      <div class="case-b">I pazienti prenotano, spostano o cancellano in autonomia — senza occupare il tuo tempo tra una seduta e l'altra. Il sistema filtra le richieste urgenti e organizza il calendario da solo.</div>
+      <div class="case-result">↑ Media: -60% chiamate gestite manualmente in studio</div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ══════════════════════════════════════════
+     FORM / CTA
+══════════════════════════════════════════ -->
+<section class="sec" id="prenota" style="padding-bottom:0">
+  <div class="eye reveal">Inizia oggi</div>
+  <h2 class="sh reveal" style="max-width:600px">Scopri quanto puoi guadagnare<br>con un sistema <em>automatico.</em></h2>
+  <p class="sp reveal">Chiamata gratuita di 20 minuti. Ti mostro esattamente cosa farebbe il sistema per la tua azienda. Senza impegno.</p>
+</section>
+
+<div class="form-sec" style="padding-top:48px">
+  <div class="form-card reveal">
+    <div id="fW">
+      <div class="fh">Parlaci <em>gratuitamente.</em></div>
+      <p class="fp">Lascia i tuoi dati. Ti contattiamo entro 24 ore su WhatsApp per fissare la chiamata.</p>
+
+      <div class="r2">
+        <div class="ff"><label>Nome <span class="req">*</span></label><input type="text" placeholder="Mario Rossi" id="fn"></div>
+        <div class="ff"><label>WhatsApp <span class="req">*</span></label><input type="tel" placeholder="+39 333 000 0000" id="fp"></div>
+      </div>
+      <div class="ff"><label>Nome azienda <span class="req">*</span></label><input type="text" placeholder="Idraulica Rossi di Mario Rossi" id="fb"></div>
+      <div class="r2">
+        <div class="ff">
+          <label>Settore</label>
+          <select id="fs">
+            <option value="">Seleziona...</option>
+            <option>Idraulico</option>
+            <option>Elettricista</option>
+            <option>Termoidraulico</option>
+            <option>Dentista / Studio medico</option>
+            <option>Clinica privata</option>
+            <option>Fisioterapista</option>
+            <option>Psicologo</option>
+            <option>Officina / Carrozzeria</option>
+            <option>Gommista</option>
+            <option>Altro</option>
+          </select>
+        </div>
+        <div class="ff"><label>Città</label><input type="text" placeholder="Milano" id="fc"></div>
+      </div>
+      <div class="ff">
+        <label>Qual è il problema principale? (facoltativo)</label>
+        <textarea placeholder="Es: perdo troppe chiamate mentre lavoro, non riesco a gestire i messaggi WhatsApp..." id="fpr"></textarea>
+      </div>
+
+      <button class="sbtn" onclick="sub()">📞 Prenota la chiamata gratuita</button>
+      <p id="fErr" style="display:none;text-align:center;font-size:14px;color:#ff6b6b;margin-top:10px">Riprova tra poco — o <a href="https://n8n.zorayax.com/webhook/contact-wa?text=Ciao%2C%20vorrei%20informazioni%20su%20Zorayax" target="_blank" style="color:#ff6b6b;font-weight:700">scrivici su WhatsApp</a></p>
+      <p class="fmicro">Garanzia 14 giorni soddisfatti · Nessun impegno · Installiamo tutto noi</p>
+    </div>
+    <div class="ok" id="okM">
+      <div class="ok-i">🎉</div>
+      <h3>Perfetto, ci sentiamo presto!</h3>
+      <p>Ti contattiamo entro 24 ore su WhatsApp<br>per fissare la chiamata gratuita.<br><br>
+      <strong style="color:var(--cyan)">ZORAYAX · +39 0171 050027</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="fw">
+    <div class="frow">
+      <div>
+        <img src="ZORAYAX_logo.png" alt="ZORAYAX" class="flogo" onerror="this.outerHTML='<span style=\'font-size:20px;font-weight:800;color:#00CFFF;font-family:Outfit,sans-serif\'>ZORAYAX</span>'">
+        <p class="fdesc">Installiamo sistemi automatici che aiutano le aziende a non perdere clienti — senza complicazioni tecniche.</p>
+        <a href="https://n8n.zorayax.com/webhook/contact-wa?text=Ciao%2C%20vorrei%20informazioni%20su%20Zorayax" target="_blank" class="fphone">💬 Scrivici su WhatsApp</a>
+      </div>
+      <div class="fcol">
+        <h5>Navigazione</h5>
+        <ul>
+          <li><a href="#come-funziona">Come funziona</a></li>
+          <li><a href="#prenota">Prenota chiamata</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h5>Legale</h5>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="termini.html">Termini di servizio</a></li>
+          <li><a href="cookie.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 ZORAYAX Automation Accelerator · Tutti i diritti riservati · P.IVA P.IVA_ZORAYAX</span>
+      <span><a href="privacy.html">Privacy</a> · <a href="termini.html">Termini</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ── WA FLOAT ── -->
+<a id="wa-float"
+   href="https://n8n.zorayax.com/webhook/contact-wa?text=Ciao%2C%20vorrei%20informazioni%20su%20Zorayax"
+   target="_blank"
+   aria-label="Scrivici su WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 2C8.268 2 2 8.268 2 16c0 2.496.648 4.84 1.78 6.876L2 30l7.312-1.752A13.94 13.94 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.5a11.46 11.46 0 01-5.84-1.6l-.42-.252-4.34 1.04 1.068-4.224-.276-.432A11.46 11.46 0 014.5 16C4.5 9.648 9.648 4.5 16 4.5S27.5 9.648 27.5 16 22.352 27.5 16 27.5zm6.3-8.572c-.344-.172-2.036-1.004-2.352-1.116-.316-.116-.544-.172-.772.172-.228.348-.884 1.116-1.084 1.348-.196.228-.396.256-.74.084-.344-.172-1.452-.536-2.764-1.704-1.02-.908-1.712-2.028-1.912-2.372-.196-.344-.02-.528.148-.7.152-.152.344-.396.516-.596.168-.196.224-.336.336-.56.112-.224.056-.42-.028-.592-.084-.172-.772-1.864-1.056-2.552-.28-.672-.564-.58-.772-.592l-.656-.012a1.26 1.26 0 00-.912.428c-.316.344-1.2 1.172-1.2 2.856s1.228 3.312 1.4 3.54c.172.228 2.416 3.688 5.856 5.172.82.352 1.46.56 1.956.716.824.26 1.572.224 2.164.136.66-.1 2.036-.832 2.324-1.636.288-.8.288-1.492.2-1.636-.084-.148-.312-.232-.656-.408z"/>
+  </svg>
+</a>
+<script>
+/* ── CANVAS STARS ── */
+(()=>{
+  const cv=document.getElementById('bg'),x=cv.getContext('2d');
+  let W,H,stars=[];
+  const init=()=>{
+    W=cv.width=innerWidth;H=cv.height=innerHeight;
+    stars=Array.from({length:160},()=>({
+      x:Math.random()*W,y:Math.random()*H,
+      r:Math.random()*.85+.1,
+      o:Math.random()*.42+.05,
+      s:(Math.random()-.5)*.00038
+    }));
+  };
+  init();window.addEventListener('resize',init);
+  const draw=()=>{
+    x.clearRect(0,0,W,H);
+    stars.forEach(s=>{
+      s.o=Math.max(.03,Math.min(.52,s.o+s.s));
+      x.beginPath();x.arc(s.x,s.y,s.r,0,Math.PI*2);
+      x.fillStyle=`rgba(0,190,255,${s.o})`;x.fill();
+    });
+    requestAnimationFrame(draw);
+  };draw();
+})();
+
+/* ── NAV ── */
+addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('s',scrollY>50);
+});
+
+/* ── REVEAL ── */
+const ro=new IntersectionObserver(e=>e.forEach(el=>{
+  if(el.isIntersecting)el.target.classList.add('on');
+}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* ── WA FLOAT ── */
+setTimeout(()=>document.getElementById('wa-float').classList.add('on'),3000);
+
+/* ── CALCOLATORE ── */
+function fmt(n){return'€'+Math.round(n).toLocaleString('it-IT')}
+function calc(){
+  const calls=+document.getElementById('cR').value;
+  const pct=+document.getElementById('pR').value/100;
+  const val=+document.getElementById('vR').value;
+  document.getElementById('cV').textContent=calls+' chiamate';
+  document.getElementById('pV').textContent=Math.round(pct*100)+'%';
+  document.getElementById('vV').textContent='€ '+val;
+  const lost=Math.round(calls*pct);
+  const dayLoss=lost*val;
+  const monthLoss=dayLoss*22;
+  const yearLoss=monthLoss*12;
+  const recovered=Math.round(monthLoss*.75);
+  document.getElementById('rDay').textContent=fmt(dayLoss);
+  document.getElementById('r1').textContent=lost+' clienti';
+  document.getElementById('r2').textContent=fmt(monthLoss);
+  document.getElementById('r3').textContent=fmt(yearLoss);
+  document.getElementById('r4').textContent=fmt(recovered)+'/mese';
+}
+calc();
+
+/* ── FORM ── */
+async function sub(){
+  const n=document.getElementById('fn').value.trim();
+  const p=document.getElementById('fp').value.trim();
+  const b=document.getElementById('fb').value.trim();
+  if(!n||!p||!b){alert('Inserisci nome, WhatsApp e nome azienda per procedere.');return;}
+  const btn=document.querySelector('.sbtn');
+  btn.disabled=true;
+  btn.innerHTML='<span class="spin"></span> Invio in corso...';
+  const controller=new AbortController();
+  const tid=setTimeout(()=>controller.abort(),8000);
+  try{
+    const res=await fetch('https://n8n.zorayax.com/webhook/zorayax-lead',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      signal:controller.signal,
+      body:JSON.stringify({
+        nome:n,
+        telefono:p,
+        azienda:b,
+        settore:document.getElementById('fs').value,
+        citta:document.getElementById('fc').value.trim(),
+        problema:document.getElementById('fpr').value.trim()
+      })
+    });
+    clearTimeout(tid);
+    if(!res.ok) throw new Error('status '+res.status);
+    document.getElementById('fW').style.display='none';
+    document.getElementById('okM').classList.add('on');
+    document.getElementById('prenota').scrollIntoView({behavior:'smooth'});
+  }catch(e){
+    clearTimeout(tid);
+    btn.disabled=false;
+    btn.innerHTML='📞 Prenota la chiamata gratuita';
+    document.getElementById('fErr').style.display='block';
+  }
+}
+</script>
+</body>
+</html>
