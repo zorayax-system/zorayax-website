@@ -616,6 +616,7 @@ footer{position:relative;z-index:1;background:var(--deep);border-top:1px solid v
         <div class="ff"><label>WhatsApp <span class="req">*</span></label><input type="tel" placeholder="+39 333 000 0000" id="fp"></div>
       </div>
       <div class="ff"><label>Nome azienda <span class="req">*</span></label><input type="text" placeholder="Idraulica Rossi di Mario Rossi" id="fb"></div>
+      <div class="ff"><label>Email <span class="req">*</span></label><input type="email" placeholder="mario@esempio.it" id="fe"></div>
       <div class="r2">
         <div class="ff">
           <label>Settore</label>
@@ -760,7 +761,8 @@ async function sub(){
   const n=document.getElementById('fn').value.trim();
   const p=document.getElementById('fp').value.trim();
   const b=document.getElementById('fb').value.trim();
-  if(!n||!p||!b){alert('Inserisci nome, WhatsApp e nome azienda per procedere.');return;}
+  const e=document.getElementById('fe').value.trim();
+  if(!n||!p||!b||!e||!e.includes('@')){alert('Inserisci nome, WhatsApp, azienda ed email valida per procedere.');return;}
   const btn=document.querySelector('.sbtn');
   btn.disabled=true;
   btn.innerHTML='<span class="spin"></span> Invio in corso...';
@@ -774,6 +776,7 @@ async function sub(){
       body:JSON.stringify({
         nome:n,
         telefono:p,
+        email:e,
         azienda:b,
         settore:document.getElementById('fs').value,
         citta:document.getElementById('fc').value.trim(),
